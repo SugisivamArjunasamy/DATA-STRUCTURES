@@ -1,0 +1,81 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+/* create your structure as Node*/
+struct Node
+{
+  int data;
+  struct Node *next;
+};
+struct Node *temp,*head;
+int main() {
+    void addafter ( struct Node *, int, int);
+    void display ( struct Node *);
+    void append ( struct Node **, int);
+int a,val,pos,val1;
+printf("Enter the number of nodes:\n");
+scanf("%d",&a);
+struct Node *newnode;
+for(int i=0;i<a;i++)
+{
+    scanf("%d",&val);
+    newnode=(struct Node*)malloc(sizeof(struct Node));
+    append(&newnode,val);
+}
+printf("Enter the position after which you want to add another node\n");
+scanf("%d",&pos);
+printf("Enter the value\n");
+scanf("%d",&val1);
+display(newnode);
+newnode=(struct Node*)malloc(sizeof(struct Node));
+addafter(newnode,val1,pos);
+
+return 0;
+}
+
+void append ( struct Node **newnode, int val) {
+
+(*newnode)->data=val;
+if(head==0)
+{
+   head=*newnode;
+   temp=head;
+}
+else
+{
+    temp->next=*newnode;
+    temp=temp->next;
+}
+}
+
+void display ( struct Node *newnode) {
+   
+    printf("The elements in the linked list are");
+    temp=head;
+   while(temp!=0)
+   {
+       printf(" %d",temp->data);
+       temp=temp->next;
+   }
+   printf("\n");
+}
+
+void addafter (struct Node *newnode, int val1, int pos) {
+
+   printf("The elements in the linked list after inserting at a specific position are");
+    temp=head;
+    newnode->data=val1;
+    for(int i=0;i<pos;i++)
+    {
+        temp=temp->next;
+    }
+    newnode->next=temp->next;
+    temp->next=newnode;
+     temp=head;
+    while(temp!=0)
+{
+    printf(" %d",temp->data);
+    temp=temp->next;
+}
+   
+}
