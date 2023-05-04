@@ -1,0 +1,84 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+/* creat your structure as node*/
+struct node
+{
+    int data;
+    struct node *next;
+};
+
+
+void append ( struct node **head, int data) {
+// Fill in the code here
+struct node *new_node;
+new_node=(struct node *)malloc(sizeof(struct node));
+new_node->data=data;
+new_node->next=NULL;
+if(*head==NULL)
+{
+   *head=new_node;
+   
+}
+else
+{
+   struct node *temp;
+   temp=*head;
+   while(temp->next!=NULL)
+   {
+       temp=temp->next;
+   }
+   temp->next=new_node;
+}
+}
+
+void display ( struct node *head) {
+// Fill in the code here
+struct node *temp;
+temp=head;
+while(temp!=NULL)
+{
+   printf(" %d",temp->data);
+   temp=temp->next;
+}
+printf("\n");
+}
+
+void delete (struct node **head) {
+// Fill in the code here
+struct node *temp,*temp1;
+temp=*head;
+temp1=*head;
+while(temp->next!=NULL)
+{
+   temp=temp->next;
+}
+while(temp1->next!=temp)
+{
+   temp1=temp1->next;
+}
+temp1->next=NULL;
+free(temp);
+temp=NULL;
+}
+int main() {
+/* insert your code here */
+    int n,value;
+    struct node *head=NULL;
+    printf("Enter the number of nodes:\n");
+    scanf("%d",&n);
+    while(n--)
+    {
+        scanf("%d",&value);
+        append(&head,value);
+    }
+    printf("The elements in the linked list are");
+    display(head);
+    printf("The elements in the linked list after deleting an element are");
+    delete(&head);
+    display(head);
+    printf("The elements in the linked list after deleting another element are");
+    delete(&head);
+    display(head);
+return 0;
+}
