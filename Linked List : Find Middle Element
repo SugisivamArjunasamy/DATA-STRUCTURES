@@ -1,0 +1,14 @@
+#include "matrix.h"
+
+int midPointValue(struct Node *head){
+   
+    struct Node *fastptr = head;
+    struct Node *slowptr = head;
+    while((fastptr!=NULL)&&(fastptr->next!=NULL)){
+        fastptr=fastptr->next->next;
+        slowptr=slowptr->next;
+    }
+    return slowptr->data;
+   
+   
+}
