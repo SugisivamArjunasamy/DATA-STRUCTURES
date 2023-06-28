@@ -1,0 +1,22 @@
+#include "edmatrix.h"
+void display(struct node *head)
+{
+    struct node *temp=head;
+    printf("\nList in Forward Direction");
+    printf("\nNULL");
+    while(temp->next!=NULL){
+        printf("<->%d",temp->data);
+        temp=temp->next;
+    }
+    printf("<->%d",temp->data);
+    printf("<->NULL");
+    printf("\nList in Backward Direction");
+    printf("\nNULL");
+    while(temp->prev!=NULL){
+        printf("<->%d",temp->data);
+        temp=temp->prev;
+    }
+    printf("<->%d",temp->data);
+    printf("<->NULL");
+   
+}
