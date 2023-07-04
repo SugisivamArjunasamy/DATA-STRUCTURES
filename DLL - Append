@@ -1,0 +1,32 @@
+#include "edmatrix.h" // Dont Delete this
+
+struct node *createNode(int data)
+{
+  struct node *newn=(struct node *)malloc(sizeof(struct node));
+  newn->data=data;
+  newn->next=NULL;
+  newn->prev=NULL;
+  return newn;
+}
+
+void append(struct node ** headAddress,int data)
+{
+    struct node *newn=createNode(data);
+    struct node *temp=*headAddress;
+    if(*headAddress==NULL)
+    {
+        *headAddress=newn;
+    }
+    else
+    {
+        while(temp->next!=NULL)
+        {
+            temp=temp->next;
+        }
+        newn->prev=temp;
+        temp->next=newn;
+    }
+   
+   
+   
+}
