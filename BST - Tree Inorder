@@ -1,0 +1,14 @@
+#include "binary.h"
+
+// Inorder Operation
+
+void inorder(struct node * root){
+  // Fill Your Code
+  if(root==NULL)
+  {
+      return;
+  }
+  inorder(root->left);
+  printf("%d ",root->data);
+  inorder(root->right);
+}
