@@ -1,0 +1,76 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+struct stack
+{
+  char *s;
+  int top;
+};
+
+void initstack(struct stack * p);
+void push(struct stack *p, char item);
+void pop(struct stack *p);
+void balancedornot(struct stack *p, char *par);
+
+int main(){
+    int n;
+  struct stack *p;
+    char par[50];
+    scanf("%d", &n); 
+    getchar();
+    while (n--){  
+        initstack(p);
+        scanf("%s",par);
+        balancedornot(p,par);
+    }
+  return 0;
+}
+
+void initstack(struct stack * p)
+{
+ char st[128];
+ p->top=-1;
+ p->s=st; 
+}
+void push(struct stack *p,char c){
+    (p->top)++;
+    p->s[p->top]=c;
+}
+ 
+void pop(struct stack *p){
+    (p->top)--;
+}
+
+void balancedornot(struct stack *p, char *par)
+{
+    int flag=1;
+  for(int i=0;par[i]!='\0';i++){
+      if((par[i]=='(')||(par[i]=='[')||(par[i]=='{')){
+          push(p,par[i]);
+      }
+      else if((par[i]==']')||(par[i]==')')||(par[i]=='}')){
+          if( (p->s[p->top]=='(')&&(par[i]==')' ))  {
+              pop(p);
+          }
+          else if((p->s[p->top]=='[')&&(par[i]==']')){
+              pop(p);
+          }
+          else if((p->s[p->top]=='{')&&(par[i]=='}') ){
+              pop(p);
+          }
+          else{
+              flag=0;
+              break;
+          }
+      }
+      
+  }
+  if(flag==1){
+      printf("Yes\n");
+  }
+  else{
+      printf("No\n");
+  }
+ 
+}
