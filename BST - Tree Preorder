@@ -1,0 +1,14 @@
+#include "binary.h"
+
+// Preorder Operation
+
+void preorder(struct node * root){
+  // Fill Your Code
+  if(root==NULL)
+  {
+      return;
+  }
+  printf("%d ",root->data);
+  preorder(root->left);
+  preorder(root->right);
+}
