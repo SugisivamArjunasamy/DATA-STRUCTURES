@@ -1,0 +1,14 @@
+#include "binary.h"
+
+// Count the Nodes
+  int count=0;
+int countNode(struct node * root){
+  // Fill Your Code
+
+  if(root==NULL)
+  return count;
+  count+=1;
+  countNode(root->left);
+  countNode(root->right);
+
+}
