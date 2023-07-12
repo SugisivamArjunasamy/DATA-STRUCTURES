@@ -1,0 +1,10 @@
+#include "binary.h"
+
+// Find Minimum Element
+
+int getMin(struct node * root){
+  // Fill Your Code
+  if(root->left==NULL)
+  return root->data;
+  getMin(root->left);
+}
