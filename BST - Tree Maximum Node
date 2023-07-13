@@ -1,0 +1,10 @@
+#include "binary.h"
+
+// Find Maximum Element
+
+int getMax(struct node * root){
+  // Fill Your Code
+  if(root->right==NULL)
+  return root->data;
+  getMax(root->right);
+}
